@@ -46,20 +46,241 @@ The tool takes 19 parameters categorised into:
 4. **End-of-Life & Transport**: EOL Route, Transport Distance, and Transport Mode.
 5. **Grid & Criticality**: Grid Renewable Share and Material Criticality.
 
-## 🧪 Dummy Example Inputs by Material
+## 🧪 Step-by-Step Dummy Inputs
 
-To quickly test the application, you can use the following dummy profiles for each material type to see how the prediction engine evaluates different inputs. Leave all unspecified fields as their default values in the CLI.
+To quickly test the application, enter the following values exactly as they are prompted in the CLI. The fields are grouped exactly how the application asks for them.
 
-| Material | Route | Mining Energy | Smelting Energy | Recycled Content | Recycling Efficiency | Product Lifetime | Expected Outcome |
-| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **Aluminum** | Secondary | 2.1 MJ/kg | 4.5 MJ/kg | 0.85 | 0.90 | 15.0 years | Highly Circular, Low Emissions |
-| **Copper** | Primary | 8.5 MJ/kg | 15.0 MJ/kg | 0.10 | 0.30 | 5.0 years | Linear, High Emissions |
-| **Steel** | Secondary | 3.0 MJ/kg | 7.0 MJ/kg | 0.70 | 0.85 | 30.0 years | Highly Circular, Low Emissions |
-| **Zinc** | Primary | 6.0 MJ/kg | 12.0 MJ/kg | 0.15 | 0.25 | 10.0 years | Linear, Moderate Emissions |
-| **Nickel** | Primary | 15.0 MJ/kg | 25.0 MJ/kg | 0.05 | 0.20 | 8.0 years | Linear, High Emissions |
-| **Titanium** | Primary | 45.0 MJ/kg | 70.0 MJ/kg | 0.02 | 0.10 | 20.0 years | Linear, Extreme Emissions |
-| **Lead** | Secondary | 1.5 MJ/kg | 3.5 MJ/kg | 0.95 | 0.95 | 3.0 years | Highly Circular, Low Emissions |
-| **Tin** | Primary | 10.0 MJ/kg | 18.0 MJ/kg | 0.10 | 0.20 | 4.0 years | Linear, Moderate Emissions |
+<details>
+<summary><b>🟢 1. Aluminum (Secondary) — Highly Circular, Low Emissions</b></summary>
+
+* **① Material Identity**
+  * `Material Type`: **1**
+  * `Production Route`: **2**
+* **② Energy Profile**
+  * `Mining Energy`: **2.1**
+  * `Smelting Energy`: **4.5**
+  * `Refining Energy`: **3.0**
+  * `Fabrication Energy`: **2.5**
+* **③ Circularity Metrics**
+  * `Recycled Content`: **0.85**
+  * `Recycling Efficiency`: **0.90**
+  * `Recycled Output`: **0.765**
+  * `Loop Closing Potential`: **0.15**
+  * `Reuse Potential`: **0.8**
+  * `Repairability`: **0.7**
+  * `Product Lifetime`: **15.0**
+* **④ End-of-Life & Transport**
+  * `End-of-Life Route`: **1** *(Recycled)*
+  * `Transport Distance`: **150.0**
+  * `Transport Mode`: **2** *(Rail)*
+* **⑤ Grid & Material Criticality**
+  * `Grid Renewable Share`: **60.0**
+  * `Renewable Electricity`: **0.6**
+  * `Material Criticality`: **0.2**
+</details>
+
+<details>
+<summary><b>🔴 2. Copper (Primary) — Linear, High Emissions</b></summary>
+
+* **① Material Identity**
+  * `Material Type`: **2**
+  * `Production Route`: **1**
+* **② Energy Profile**
+  * `Mining Energy`: **8.5**
+  * `Smelting Energy`: **15.0**
+  * `Refining Energy`: **8.0**
+  * `Fabrication Energy`: **4.0**
+* **③ Circularity Metrics**
+  * `Recycled Content`: **0.10**
+  * `Recycling Efficiency`: **0.30**
+  * `Recycled Output`: **0.03**
+  * `Loop Closing Potential`: **0.05**
+  * `Reuse Potential`: **0.4**
+  * `Repairability`: **0.3**
+  * `Product Lifetime`: **5.0**
+* **④ End-of-Life & Transport**
+  * `End-of-Life Route`: **2** *(Landfill)*
+  * `Transport Distance`: **2000.0**
+  * `Transport Mode`: **1** *(Truck)*
+* **⑤ Grid & Material Criticality**
+  * `Grid Renewable Share`: **20.0**
+  * `Renewable Electricity`: **0.2**
+  * `Material Criticality`: **0.6**
+</details>
+
+<details>
+<summary><b>🟢 3. Steel (Secondary) — Highly Circular, Low Emissions</b></summary>
+
+* **① Material Identity**
+  * `Material Type`: **3**
+  * `Production Route`: **2**
+* **② Energy Profile**
+  * `Mining Energy`: **3.0**
+  * `Smelting Energy`: **7.0**
+  * `Refining Energy`: **4.0**
+  * `Fabrication Energy`: **3.0**
+* **③ Circularity Metrics**
+  * `Recycled Content`: **0.70**
+  * `Recycling Efficiency`: **0.85**
+  * `Recycled Output`: **0.59**
+  * `Loop Closing Potential`: **0.12**
+  * `Reuse Potential`: **0.7**
+  * `Repairability`: **0.8**
+  * `Product Lifetime`: **30.0**
+* **④ End-of-Life & Transport**
+  * `End-of-Life Route`: **1** *(Recycled)*
+  * `Transport Distance`: **300.0**
+  * `Transport Mode`: **3** *(Ship)*
+* **⑤ Grid & Material Criticality**
+  * `Grid Renewable Share`: **50.0**
+  * `Renewable Electricity`: **0.5**
+  * `Material Criticality`: **0.3**
+</details>
+
+<details>
+<summary><b>🟡 4. Zinc (Primary) — Linear, Moderate Emissions</b></summary>
+
+* **① Material Identity**
+  * `Material Type`: **4**
+  * `Production Route`: **1**
+* **② Energy Profile**
+  * `Mining Energy`: **6.0**
+  * `Smelting Energy`: **12.0**
+  * `Refining Energy`: **6.0**
+  * `Fabrication Energy`: **3.5**
+* **③ Circularity Metrics**
+  * `Recycled Content`: **0.15**
+  * `Recycling Efficiency`: **0.25**
+  * `Recycled Output`: **0.04**
+  * `Loop Closing Potential`: **0.03**
+  * `Reuse Potential`: **0.3**
+  * `Repairability`: **0.4**
+  * `Product Lifetime`: **10.0**
+* **④ End-of-Life & Transport**
+  * `End-of-Life Route`: **2** *(Landfill)*
+  * `Transport Distance`: **800.0**
+  * `Transport Mode`: **1** *(Truck)*
+* **⑤ Grid & Material Criticality**
+  * `Grid Renewable Share`: **30.0**
+  * `Renewable Electricity`: **0.3**
+  * `Material Criticality`: **0.4**
+</details>
+
+<details>
+<summary><b>🔴 5. Nickel (Primary) — Linear, High Emissions</b></summary>
+
+* **① Material Identity**
+  * `Material Type`: **5**
+  * `Production Route`: **1**
+* **② Energy Profile**
+  * `Mining Energy`: **15.0**
+  * `Smelting Energy`: **25.0**
+  * `Refining Energy`: **12.0**
+  * `Fabrication Energy`: **5.0**
+* **③ Circularity Metrics**
+  * `Recycled Content`: **0.05**
+  * `Recycling Efficiency`: **0.20**
+  * `Recycled Output`: **0.01**
+  * `Loop Closing Potential`: **0.08**
+  * `Reuse Potential`: **0.5**
+  * `Repairability`: **0.5**
+  * `Product Lifetime`: **8.0**
+* **④ End-of-Life & Transport**
+  * `End-of-Life Route`: **2** *(Landfill)*
+  * `Transport Distance`: **5000.0**
+  * `Transport Mode`: **6** *(Air)*
+* **⑤ Grid & Material Criticality**
+  * `Grid Renewable Share`: **25.0**
+  * `Renewable Electricity`: **0.25**
+  * `Material Criticality`: **0.8**
+</details>
+
+<details>
+<summary><b>🔴 6. Titanium (Primary) — Linear, Extreme Emissions</b></summary>
+
+* **① Material Identity**
+  * `Material Type`: **6**
+  * `Production Route`: **1**
+* **② Energy Profile**
+  * `Mining Energy`: **45.0**
+  * `Smelting Energy`: **70.0**
+  * `Refining Energy`: **35.0**
+  * `Fabrication Energy`: **15.0**
+* **③ Circularity Metrics**
+  * `Recycled Content`: **0.02**
+  * `Recycling Efficiency`: **0.10**
+  * `Recycled Output`: **0.002**
+  * `Loop Closing Potential`: **0.10**
+  * `Reuse Potential`: **0.6**
+  * `Repairability`: **0.6**
+  * `Product Lifetime`: **20.0**
+* **④ End-of-Life & Transport**
+  * `End-of-Life Route`: **2** *(Landfill)*
+  * `Transport Distance`: **8000.0**
+  * `Transport Mode`: **6** *(Air)*
+* **⑤ Grid & Material Criticality**
+  * `Grid Renewable Share`: **15.0**
+  * `Renewable Electricity`: **0.15**
+  * `Material Criticality`: **0.9**
+</details>
+
+<details>
+<summary><b>🟢 7. Lead (Secondary) — Highly Circular, Low Emissions</b></summary>
+
+* **① Material Identity**
+  * `Material Type`: **7**
+  * `Production Route`: **2**
+* **② Energy Profile**
+  * `Mining Energy`: **1.5**
+  * `Smelting Energy`: **3.5**
+  * `Refining Energy`: **2.0**
+  * `Fabrication Energy`: **1.5**
+* **③ Circularity Metrics**
+  * `Recycled Content`: **0.95**
+  * `Recycling Efficiency`: **0.95**
+  * `Recycled Output`: **0.90**
+  * `Loop Closing Potential`: **0.05**
+  * `Reuse Potential`: **0.9**
+  * `Repairability`: **0.9**
+  * `Product Lifetime`: **3.0**
+* **④ End-of-Life & Transport**
+  * `End-of-Life Route`: **1** *(Recycled)*
+  * `Transport Distance`: **100.0**
+  * `Transport Mode`: **2** *(Rail)*
+* **⑤ Grid & Material Criticality**
+  * `Grid Renewable Share`: **45.0**
+  * `Renewable Electricity`: **0.45**
+  * `Material Criticality`: **0.5**
+</details>
+
+<details>
+<summary><b>🟡 8. Tin (Primary) — Linear, Moderate Emissions</b></summary>
+
+* **① Material Identity**
+  * `Material Type`: **8**
+  * `Production Route`: **1**
+* **② Energy Profile**
+  * `Mining Energy`: **10.0**
+  * `Smelting Energy`: **18.0**
+  * `Refining Energy`: **9.0**
+  * `Fabrication Energy`: **4.0**
+* **③ Circularity Metrics**
+  * `Recycled Content`: **0.10**
+  * `Recycling Efficiency`: **0.20**
+  * `Recycled Output`: **0.02**
+  * `Loop Closing Potential`: **0.04**
+  * `Reuse Potential`: **0.4**
+  * `Repairability`: **0.5**
+  * `Product Lifetime`: **4.0**
+* **④ End-of-Life & Transport**
+  * `End-of-Life Route`: **2** *(Landfill)*
+  * `Transport Distance`: **1500.0**
+  * `Transport Mode`: **3** *(Ship)*
+* **⑤ Grid & Material Criticality**
+  * `Grid Renewable Share`: **30.0**
+  * `Renewable Electricity`: **0.30**
+  * `Material Criticality`: **0.7**
+</details>
 
 ## 🛡️ Best Practices Applied
 
