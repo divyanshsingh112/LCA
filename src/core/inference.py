@@ -32,12 +32,23 @@ class MLModelHandler:
         mci_score = float(predictions[0][1])
         
         latency_ms = round((time.perf_counter() - start_time) * 1000, 2)
-        
+
+        energy = (
+        input_features["mining_energy_MJ_per_kg"]
+        + input_features["smelting_energy_MJ_per_kg"]
+        + input_features["refining_energy_MJ_per_kg"]
+        + input_features["fabrication_energy_MJ_per_kg"]
+    )
+        waste = 1 - input_features["recycling_efficiency_frac"]
+        recovered = input_features["recycled_output_kg_per_kg"]
         return {
-            "mci": mci_score,
-            "emissions": emissions,
-            "latency": latency_ms
-        }
+        "mci": mci_score,
+        "emissions": emissions,
+        "energy": energy,
+        "waste": waste,
+        "recovered": recovered,
+        "latency": latency_ms
+    }
 
 # Initialize a single instance to be used across the whole app
 model_handler = MLModelHandler()

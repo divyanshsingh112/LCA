@@ -50,8 +50,12 @@ async def get_prediction(data: MaterialInput):
             "data": {
                 "input_material": data.material,
                 "predictions": {
+                    "emissions_kgCO2e_per_kg": results['emissions'],
+                    "energy_MJ_per_kg": results['energy'],
                     "MCI_score": results['mci'],
-                    "emissions_kgCO2e": results['emissions']
+                    "v_kg": results['waste'],
+                    "emissions_kgCO2e": results['emissions'],
+                    "recovered_kg": results['recovered']
                 }
             }
         }

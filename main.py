@@ -316,11 +316,18 @@ def display_prediction(result, latency_ms):
     t.add_column("Value", justify="right", style="bold bright_white", min_width=16)
     t.add_column("Assessment", justify="center", min_width=24)
 
-    t.add_row("MCI Score",     f"{mci:.4f}",              Text(mci_label, style=mci_style))
+    waste = data["v_kg"]
+    recovered = data["recovered_kg"]
+    energy = data["energy_MJ_per_kg"]
+
+
+    t.add_row("Circularity (MCI)",     f"{mci:.4f}",              Text(mci_label, style=mci_style))
     t.add_row("CO₂ Emissions", f"{emissions:.4f} kg/kg",  Text(emi_label, style=emi_style))
     t.add_row("API Latency",   f"{latency_ms:.0f} ms",    Text("⚡ Live", style="bold bright_cyan"))
-    t.add_row("Transaction",   result["transaction_id"],   Text("✔ Logged", style="dim"))
-
+    t.add_row("Waste Generated", f"{waste:.4f} kg", Text("● WASTE", style="bold bright_yellow"))
+    t.add_row("Recovered Material", f"{recovered:.4f} kg", Text("● RECOVERED", style="bold bright_green"))
+    t.add_row("Total Energy", f"{energy:.4f} MJ/kg", Text("● ENERGY", style="bold bright_cyan"))
+    
     ts = time.strftime("%Y-%m-%d %H:%M:%S")
     console.print(Panel(
         t,
@@ -437,3 +444,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+    
